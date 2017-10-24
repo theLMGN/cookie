@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-client.login('MzcwNjMzNzcwNDA5MjYzMTA2.DMp7HA.C9019oL6yb0l97XaJske58nIzJQ');
+client.login('TOKEN HERE');
 let prefix = "--";
 var mutedUsers = [];
 var upSecs = 16;
