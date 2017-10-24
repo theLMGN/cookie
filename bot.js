@@ -1,18 +1,13 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-client.login('TOKEN HERE');
-let prefix = "--";
+const settings = require('./settings.json')
+let prefix = "dan.";
 var mutedUsers = [];
 var upSecs = 16;
 var upMins = 18;
 var upHours = 6;
 var upDays = 40;
-
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.username}!`);
-  client.user.setPresence({ game: { name: "In Beta | --help", type: 0 } });
-});
-
+require('./util/eventLoader')(client);
 
 function muteUser(user) {
 	mutedUsers.push(user.id)
@@ -40,16 +35,6 @@ client.on('message', message => {
   	message.reply("Hey, I don't work using DMs, Join Sam's Lounge! https://discord.gg/7vbPubA")
     return
   	}
-
- if (command === "ping") {
-	const embed = new Discord.RichEmbed();
-	embed.setTitle("")
-	.addField("Pong! :ping_pong:", `${Math.floor(client.ping)}ms`)
-	.setColor("#3dff3d")
-	.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA")
-	message.channel.send({embed});
-	return
-}
 
  if (command === "membercount") {
 	 const embed = new Discord.RichEmbed();
@@ -435,13 +420,6 @@ const embed = new Discord.RichEmbed();
     }
   }
 }
-else {
-	 const embed = new Discord.RichEmbed();
-	 embed.setTitle("❌ Error!")
-	 .setDescription("Invalid Command!")
-	 .setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA")
-	 .setColor("#ff0000")
-	 message.channel.sendMessage({embed});
-	 return
-}
 })
+
+client.login(settings.token);

@@ -1,0 +1,22 @@
+{
+  "name": "cookiedev-dan",
+  "version": "1.0.0",
+  "description": "Cookie v2.6.5",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samonyt/cookie.git"
+  },
+  "author": "Dan.#2518",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samonyt/cookie/issues"
+  },
+  "homepage": "https://github.com/samonyt/cookie#readme",
+  "dependencies": {
+    "discord.js": "^11.1.0"
+  }
+}
