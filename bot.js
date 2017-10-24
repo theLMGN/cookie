@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const settings = require('./settings.json')
-let prefix = "dan.";
+let prefix = "--";
 var upSecs = 16;
 var upMins = 18;
 var upHours = 6;
@@ -20,5 +20,27 @@ client.on('message', message => {
     return
   	}
 })
+
+client.on('guildMemberAdd', member => {
+    const embed = new Discord.RichEmbed();
+    const channel = member.guild.channels.find('name', 'mainchat');
+    if (!channel) return;
+    embed.setTitle(":wave: New member!")
+    .setDescription(`Welcome ${member}, Read the rules and have fun!:`)
+    .setColor("#3dff3d")
+    .setFooter("v2.6.5")
+    channel.send({embed});
+})
+
+client.on('guildMemberRemove', member => {
+	const embed = new Discord.RichEmbed();
+	const channel = member.guild.channels.find('name', 'general');
+	if (!channel) return;
+	embed.setTitle("User Left!")
+	.setDescription(`We hope to see you again ${member} .... :pensive:`)
+	.setColor("#ff0000")
+	.setFooter("v2.6.5")
+	channel.send({embed});
+}) 
 
 client.login(settings.token);
