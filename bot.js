@@ -26,7 +26,7 @@ client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.find('name', 'mainchat');
     if (!channel) return;
     embed.setTitle(":wave: New member!")
-    .setDescription(`Welcome ${member}, Read the rules and have fun!:`)
+    .setDescription(`Welcome ${member}, Read the rules and have fun!`)
     .setColor("#3dff3d")
     .setFooter("v2.6.5")
     channel.send({embed});
