@@ -1,5 +1,5 @@
 {
-  "name": "cookiedev-blinc",
+  "name": "Cookie",
   "version": "1.0.0",
   "description": "Cookie v2.6.5",
   "main": "bot.js",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/samonyt/cookie.git"
   },
-  "author": "BLinc",
+  "author": "Sam, Dan, BLinc",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/samonyt/cookie/issues"
