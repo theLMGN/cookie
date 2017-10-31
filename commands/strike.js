@@ -26,7 +26,7 @@ exports.run = function(client, message, args, db) {
 	} else {
 		embed.setTitle("✅ Success!")
 			.setDescription("The Strike Has Been Added!")
-			.setColor("#3dff3d")
+			.setColor("#008000")
 			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA");
 		message.channel.send({embed});
 		

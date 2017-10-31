@@ -22,7 +22,7 @@ exports.run = function(client, message, args, db) {
 			.setColor("#ff0000")
 			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA");
 		message.channel.send({embed});
-	} else {
+	}else {
 		let memberID = message.mentions.members.first().id;
  		let issued = db.get('warnings').value();
  		var totes = ''
@@ -36,11 +36,19 @@ exports.run = function(client, message, args, db) {
    		var deletion = [issued[i].deleted]
    		var date = [issued[i].date]
    		if (issued[i].member_id === memberID && issued[i].deleted === false) {
-     		totes += `│Strike ID: ${id} \n│Server Name: ${servName} \n│Server ID: ${servId} \n│Member Name: ${memName} \n│Member ID: ${member} \n│Reason: ${strike} \n│Date: ${date} \n└───────────────────────────────────────────────────\n`;
+     		totes += `\n┌───────────┐\n│  Strike ID│ ${id} \n├───────────┤\n│Server Name│ ${servName} \n├───────────┤\n│  Server ID│ ${servId} \n├───────────┤\n│Member Name│ ${memName} \n├───────────┤\n│  Member ID│ ${member} \n├───────────┤\n│     Reason│ ${strike} \n├───────────┤\n│       Date│ ${date} \n└───────────┘\n`;
    		};
  		};
- 		message.channel.send(totes, {
+ 		if(totes === '') {
+ 			embed.setTitle("❌ Error!")
+				.setDescription("No Strikes Found")
+				.setColor("#ff0000")
+				.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA");
+			message.channel.send({embed});
+		}else{
+ 			message.channel.send(totes, {
  			code:"diff",
  			split: true});
+ 		}
 	};
 };
