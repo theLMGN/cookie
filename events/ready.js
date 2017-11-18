@@ -1,4 +1,4 @@
 module.exports = client => {
-  	console.log('CookieDEV [BLinc] is online!');
+  	console.log('CookieDEV [Dan] is online!');
 	client.user.setStatus('dnd');
 }

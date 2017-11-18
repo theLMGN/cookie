@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/samonyt/cookie#readme",
   "dependencies": {
-    "discord.js": "^11.2.1",
+    "discord.js": "^11.1.0",
     "lowdb": "^1.0.0",
     "request": "^2.83.0",
     "shortid": "^2.2.8"
