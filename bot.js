@@ -8,6 +8,13 @@ var upHours = 6;
 var upDays = 40;
 require('./util/eventLoader')(client);
 
+Object.assign(String.prototype, {
+	escapeRegex() {
+		const matchOperators = /[|\\{}()[\]^$+*?.]/g;
+		return this.replace(matchOperators, "\\$&");
+	},
+});
+
 client.on('message', message => {
   if(message.author.bot) return;
   if(!message.content.startsWith(prefix)) return;
