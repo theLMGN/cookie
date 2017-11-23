@@ -1,7 +1,7 @@
 const settings = require("../settings.json");
 const Discord = require("discord.js");
 
-exports.run = async (client, message, args) => {
+module.exports = async(client, msg, suffix) => {
   if (settings.maintainers.includes(message.author.id)) {
     if (args) {
       args = args.join(" ")
