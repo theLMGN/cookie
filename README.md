@@ -1,1 +1,1 @@
-Cookie v2.6.5
+Cookie v2.0

@@ -1,7 +1,7 @@
 {
   "name": "Cookie",
   "version": "1.0.0",
-  "description": "Cookie v2.6.5",
+  "description": "Cookie v2.0",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,16 +10,20 @@
     "type": "git",
     "url": "git+https://github.com/samonyt/cookie.git"
   },
-  "author": "Sam, Dan, BLinc",
+  "author": "Sam, Dan, BLinc, SunburntRock89",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/samonyt/cookie/issues"
   },
   "homepage": "https://github.com/samonyt/cookie#readme",
   "dependencies": {
-    "discord.js": "^11.1.0",
+    "discord.js": "github:Hydrabolt/Discord.js",
+    "eslint": "^4.11.0",
     "lowdb": "^1.0.0",
+    "moment": "^2.19.2",
+    "mongoose": "^4.13.4",
     "request": "^2.83.0",
-    "shortid": "^2.2.8"
+    "shortid": "^2.2.8",
+    "winston": "^2.4.0"
   }
 }

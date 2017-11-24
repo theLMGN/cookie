@@ -1,11 +1,11 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 
-exports.run = function(client, message, args) {
-	const embed = new Discord.RichEmbed();
+module.exports = async(client, message, suffix, serverDocument) => {
+	const embed = new Discord.MessageEmbed();
 	message.delete();
 	embed.setTitle("The Truth")
-	.setDescription("JS > PY")
-	.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA")
-	.setColor("#3dff3d")
-	message.channel.sendMessage({embed});
-}
+		.setDescription("JS > PY")
+		.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3")
+		.setColor("#3dff3d");
+	message.channel.send({ embed });
+};

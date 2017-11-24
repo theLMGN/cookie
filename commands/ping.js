@@ -1,12 +1,11 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 
-exports.run = function(client, message, args) {
-	const embed = new Discord.RichEmbed();
-	message.delete();
-	message.reply('Pong...').then((msg) => {
-		embed.addField("Pong! :ping_pong:", `${msg.createdTimestamp - message.createdTimestamp}ms`)
-			.setColor("#3dff3d")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 and Dan.#2518 | https://discord.gg/7vbPubA")
-		msg.edit({embed});
-	})
-}
+module.exports = async(client, message, suffix, serverDocument) => {
+	const embed = new Discord.MessageEmbed();
+	embed.setTitle(`Pong! :ping_pong:`)
+		.setDescription(`This took me ${Math.floor(client.ping)}ms.`)
+		.setColor("#3dff3d")
+		.setFooter("v2.0 | Cookie, By Sam.#8235 and Dan.#2518 | https://discord.gg/tuaVr3");
+	message.channel.send(embed);
+};
+
