@@ -35,7 +35,7 @@ module.exports = async(client, msg, suffix) => {
 				title: `:no_entry: No Permissions`,
 				description: `:raised_hand: Maintainers only. (AKA Sam and Dan)`,
 				footer: {
-					text: "v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA",
+					text: "v2.0 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA",
 				},
 			},
 		});

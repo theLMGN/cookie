@@ -21,7 +21,7 @@ module.exports = async(client, msg, suffix, serverDocument) => {
 						title: "✅ Success!",
 						description: `${member.username}#${member.discriminator} has been banned.`,
 						footer: {
-							text: `v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA`,
+							text: `v2.0 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA`,
 						},
 					},
 				});
@@ -31,7 +31,7 @@ module.exports = async(client, msg, suffix, serverDocument) => {
 						title: "❗ Success!",
 						description: `Looks like you've been banned from ${msg.guild.name} for: ${reason}`,
 						footer: {
-							text: `v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA`,
+							text: `v2.0 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA`,
 						},
 					},
 				});
@@ -42,7 +42,7 @@ module.exports = async(client, msg, suffix, serverDocument) => {
 						title: "❌ Error!",
 						description: err.message,
 						footer: {
-							text: `v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA`,
+							text: `v2.0 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA`,
 						},
 					},
 				});
@@ -71,7 +71,7 @@ module.exports = async(client, msg, suffix, serverDocument) => {
 				title: "❌ Error!",
 				description: `You do not have permission to execute this command.`,
 				footer: {
-					text: `v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA`,
+					text: `v2.0 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA`,
 				},
 			},
 		});

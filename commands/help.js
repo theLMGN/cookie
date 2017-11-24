@@ -10,7 +10,7 @@ module.exports = async(client, message, suffix, serverDocument, winston) => {
 			.setDescription("Press ⏭ to goto the next page\nPress ⏮ to goto the previous page\nPress 🗑 to delete the help menu!")
 			.addField("PAGE: ", "1/4")
 			.setColor("#3dff3d")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3"),
+			.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3"),
 		// embed 1
 		new Discord.MessageEmbed()
 			.setTitle("Cookie Help Menu!")
@@ -23,7 +23,7 @@ module.exports = async(client, message, suffix, serverDocument, winston) => {
 			.addField("--invite", "Displays an invite for this bot!")
 			.addField("PAGE:", "2/4")
 			.setColor("#3dff3d")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3"),
+			.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3"),
 		// embed 2
 		new Discord.MessageEmbed()
 			.setTitle("Cookie Help Menu!")
@@ -33,7 +33,7 @@ module.exports = async(client, message, suffix, serverDocument, winston) => {
 			.addField("--js", "Better then py :)")
 			.addField("PAGE:", "3/4")
 			.setColor("#3dff3d")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3"),
+			.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3"),
 		// embed 3
 		new Discord.MessageEmbed()
 			.setTitle("Cookie Help Menu!")
@@ -45,7 +45,7 @@ module.exports = async(client, message, suffix, serverDocument, winston) => {
 			.addField("--unmute {user}", "Unmutes the user!")
 			.addField("--timeout {user} {time}", "Timesout the user for a specified time!")
 			.addField("PAGE:", "4/4")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3")
+			.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3")
 			.setColor("#3dff3d"),
 	];
 

@@ -1,7 +1,7 @@
 {
   "name": "Cookie",
   "version": "1.0.0",
-  "description": "Cookie v2.6.5",
+  "description": "Cookie v2.0",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

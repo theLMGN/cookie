@@ -9,7 +9,7 @@ exports.run = function(client, message, args, db) {
 				embed.setTitle("✅ Success!")
 					.setDescription("Strike Deleted!")
 					.setColor("#008000")
-					.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
+					.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
 				message.channel.send({ embed });
 			}
 	 }

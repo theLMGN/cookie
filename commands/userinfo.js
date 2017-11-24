@@ -12,6 +12,6 @@ module.exports = async(client, message, suffix, serverDocument) => {
 		.addField(`Kickable?:`, `${message.member.kickable}`)
 		.addField(`User Avatar:`, `${message.author.avatarURL({ format: "png" })}`)
 		.setColor("#3dff3d")
-		.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
+		.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
 	message.channel.send(embed);
 };
