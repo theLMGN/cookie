@@ -41,7 +41,7 @@ client.on('guildMemberAdd', member => {
 
 client.on('guildMemberRemove', member => {
 	const embed = new Discord.RichEmbed();
-	const channel = member.guild.channels.find('name', 'general');
+	const channel = member.guild.channels.find('name', 'mainchat');
 	if (!channel) return;
 	embed.setTitle("User Left!")
 	.setDescription(`We hope to see you again ${member} .... :pensive:`)
