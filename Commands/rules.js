@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports = async(client, message, suffix, serverDocument) => {
-	if (!message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return message.channel.send(`${message.author} Bad perms, git gud skrub`).catch(console.error);
+	if (!message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return message.channel.send(`${message.author} :raised_hand: MANAGE_ROLES Required!`).catch(console.error);
 	const embed = new Discord.MessageEmbed();
 	message.delete();
 	embed.setTitle("Rules")
