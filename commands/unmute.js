@@ -24,7 +24,7 @@ exports.run = function(client, meessage, args) {
 				.setDescription("Missing User!")
 				.setColor("#ff0000")
 				.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-			message.channel.sendMessage({ embed });
+			message.channel.send({ embed });
 
 			unmutedUser = message.mentions.users.first();
 			winston.info(unmutedUser);
@@ -33,21 +33,21 @@ exports.run = function(client, meessage, args) {
 					.setDescription("You Can't Unmute Me, I can't be muted!")
 					.setColor("#ff0000")
 					.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-				message.channel.sendMessage({ embed });
+				message.channel.send({ embed });
 				return;
 			}
 			embed.setTitle("✅ Success!")
 				.setDescription("Successfully Unmuted!")
 				.setColor("#3dff3d")
 				.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-			message.channel.sendMessage({ embed });
+			message.channel.send({ embed });
 			unmuteUser(unmutedUser);
 		} else {
 			embed.setTitle("❌ Error!")
 				.setDescription("You haven't got Staff silly!")
 				.setColor("#ff0000")
 				.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-			message.channel.sendMessage({ embed });
+			message.channel.send({ embed });
 		}
 	}
 };

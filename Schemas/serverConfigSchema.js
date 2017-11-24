@@ -6,7 +6,7 @@ module.exports = {
 		_id: { type: String, required: true },
 		level: { type: Number, default: 1, enum: [1, 2, 3] },
 	})],
-	command_prefix: { type: String, default: "-", maxlength: 10, minlength: 1 },
+	command_prefix: { type: String, default: "%", maxlength: 10, minlength: 1 },
 	moderation: {
 		isEnabled: { type: Boolean, default: true },
 		status_messages: {

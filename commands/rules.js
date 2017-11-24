@@ -18,5 +18,5 @@ module.exports = async(client, message, suffix, serverDocument) => {
 		.addField("Rule 8:", "No NSFW, yes... Everyone likes a little bit of it, but not here. Keep it clean!")
 		.addField("Rule 9:", "Reading is exhausting... Well at least you've finished the rules!")
 		.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-	message.channel.send({ embed });
+	message.channel.send(embed);
 };

@@ -6,5 +6,5 @@ module.exports = async(client, message, suffix, serverDocument) => {
 		.setDescription(`You Currently Have ${message.guild.memberCount} Members!`)
 		.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3")
 		.setColor("#3dff3d");
-	message.channel.sendMessage({ embed });
+	message.channel.send({ embed });
 };

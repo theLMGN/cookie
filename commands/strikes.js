@@ -1,54 +1,61 @@
-const Discord = require("discord.js");
-exports.run = function(client, message, args, db) {
-	const embed = new Discord.MessageEmbed();
-	let modRole = message.guild.roles.find("name", "Cookie Developers");
-	if (!message.member.roles.has(modRole.id)) {
-  	embed.setTitle("❌ Error!")
-			.setDescription("You haven't got Staff silly!")
-			.setColor("#ff0000")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-		message.channel.send({ embed });
-	}
-	if (message.mentions.members.first() === "370633770409263106") {
-  	embed.setTitle("❌ Error!")
-  		.setDescription("You Can't Strike Me!")
-			.setColor("#ff0000")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-  	message.channel.send({ embed });
-	}
-	if (!message.mentions.members.first()) {
-		embed.setTitle("❌ Error!")
-			.setDescription("Provide a user")
-			.setColor("#ff0000")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-		message.channel.send({ embed });
-	} else {
-		let memberID = message.mentions.members.first().id;
- 		let issued = db.get("warnings").value();
- 		var totes = "";
- 		for (var i = 0; i < issued.length; i++) {
-   		var strike = [issued[i].reason];
-   		var member = [issued[i].member_id];
-   		var id = [issued[i].id];
-   		var servName = [issued[i].server_name];
-   		var memName = [issued[i].member_name];
-   		var servId = [issued[i].server_id];
-   		var deletion = [issued[i].deleted];
-   		var date = [issued[i].date];
-   		if (issued[i].member_id === memberID && issued[i].deleted === false) {
-     		totes += `\n┌───────────┐\n│  Strike ID│ ${id} \n├───────────┤\n│Server Name│ ${servName} \n├───────────┤\n│  Server ID│ ${servId} \n├───────────┤\n│Member Name│ ${memName} \n├───────────┤\n│  Member ID│ ${member} \n├───────────┤\n│     Reason│ ${strike} \n├───────────┤\n│       Date│ ${date} \n└───────────┘\n`;
-   		}
- 		}
- 		if (totes === "") {
- 			embed.setTitle("❌ Error!")
-				.setDescription("No Strikes Found")
-				.setColor("#ff0000")
-				.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-			message.channel.send({ embed });
+const moment = require("moment");
+
+module.exports = async(client, msg, suffix, serverDocument, winston) => {
+	if (suffix) {
+		// const member = suffix.toLowerCase() == "me" ? msg.member : client.memberSearch(suffix, msg.guild);
+		let member;
+		member = await client.memberSearch(suffix, msg.guild).catch(() => {
+			member = null;
+		});
+		if (member) {
+			var targetMemberDocument = serverDocument.members.id(member.id);
+			// Create member data if not found
+			if (!targetMemberDocument) {
+				serverDocument.members.push({ _id: msg.author.id });
+				targetMemberDocument = serverDocument.members.id(msg.author.id);
+				targetMemberDocument.strikes = [];
+			}
+			let embed_fields = [];
+			targetMemberDocument.strikes.map(strikeDocument => {
+				// const creator = msg.guild.members.get(strikeDocument._id);
+				const creator = client.memberSearch(strikeDocument._id, msg.guild);
+				msg.reply(creator.tag)
+				embed_fields.push({
+					name: `Warning from ${creator.toString()}`,
+					value: `${strikeDocument.reason} - ${moment(strikeDocument.timestamp).fromNow()}`,
+					inline: true,
+				});
+			});
+			if (targetMemberDocument.strikes.length == 0) {
+				msg.channel.send({
+					embed: {
+						author: {
+							name: client.user.username,
+						},
+						color: 0x00FF00,
+						description: `✅ **${member.toString()}** doesn't have any strikes`,
+						footer: {
+							text: `They are a nice person`,
+						},
+					},
+				});
+			} else {
+				msg.channel.send({
+					embed: {
+						author: {
+							name: client.user.username,
+						},
+						color: 0x00FF00,
+						title: `Here are the strikes for ${member.targetMemberDocument}`,
+						fields: embed_fields,
+					},
+				});
+			}
 		} else {
- 			message.channel.send(totes, {
- 			code: "diff",
- 			split: true });
- 		}
+			winston.warn(`Requested member does not exist so strikes cannot be shown`, { svrid: msg.guild.id, chid: msg.channel.id, usrid: msg.author.id });
+			msg.channel.send(`I don't know who ${suffix} is! 😦`);
+		}
+	} else {
+		msg.reply("Everyone on this server has no strikes!");
 	}
 };

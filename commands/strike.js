@@ -1,54 +1,95 @@
-const shortid = require("shortid");
-const Discord = require("discord.js");
-exports.run = function(client, message, suffix, db) {
-	const embed = new Discord.MessageEmbed();
-	const embed2 = new Discord.MessageEmbed();
-	let modRole = message.guild.roles.find("name", "Cookie Developers");
-	if (!message.member.roles.has(modRole.id)) {
-  	embed.setTitle("❌ Error!")
-			.setDescription("You haven't got Staff silly!")
-			.setColor("#ff0000")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-		message.channel.send({ embed });
-	}
-	if (message.mentions.members.first() === "370633770409263106") {
-  	embed.setTitle("❌ Error!")
-  		.setDescription("You Can't Strike Me!")
-			.setColor("#ff0000")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-  	message.channel.send({ embed });
-	}
-	if (!message.mentions.members.first() || suffix.slice(1).join(" ") === "") {
-		embed.setTitle("❌ Error!")
-			.setDescription("Provide a user and a reason!")
-			.setColor("#ff0000")
-			.setFooter("v2.6.5 | Cookie, By Sam .#8235 | https://discord.gg/tuaVr3");
-		message.channel.send({ embed });
+const settings = require("../settings.json");
+
+module.exports = async(client, msg, suffix, serverDocument) => {
+	if (serverDocument.Config.admins.id(msg.author.id).level >= 1 || settings.maintainers.includes(msg.author.id)) {
+		let member, reason;
+		if (suffix.indexOf("|") > -1 && suffix.length > 3) {
+			member = await client.memberSearch(suffix.substring(0, suffix.indexOf("|")).trim(), msg.guild).catch(() => {
+				member = null;
+			});
+			reason = suffix.substring(suffix.indexOf("|") + 1).trim();
+		} else {
+			member = await client.memberSearch(suffix, msg.guild).catch(() => {
+				member = null;
+			});
+		}
+		if (member) {
+			let targetMemberDocument = serverDocument.members.id(member.id);
+			if (!targetMemberDocument) {
+				serverDocument.members.push({ _id: member.id });
+				targetMemberDocument = serverDocument.members.id(member.id);
+			}
+			targetMemberDocument.strikes.push({
+				_id: msg.author.id,
+				reason: reason || "No reason",
+			});
+			await serverDocument.save().then(() => {
+				if (reason) {
+					msg.channel.send({
+						embed: {
+							color: 0x00FF00,
+							author: {
+								name: `${client.user.username}`,
+							},
+							description: `${member.user.username} has been striked for: ${reason}`,
+							footer: {
+								text: `They now have ${targetMemberDocument.strikes.length} strike(s).`,
+							},
+						},
+					});
+				} else {
+					msg.channel.send({
+						embed: {
+							color: 0x00FF00,
+							author: {
+								name: `${client.user.username}`,
+							},
+							description: `${member.user.username} has been striked for: No Reason`,
+							footer: {
+								text: `They now have ${targetMemberDocument.strikes.length} strike(s).`,
+							},
+						},
+					});
+				}
+			}).catch(err => {
+				msg.channel.send({
+					embed: {
+						color: 0xFF0000,
+						title: "❌ Error",
+						description: `Could not add strike to member: ${err}`,
+						footer: {
+							text: `If you do not understand this error please DM a Cookie developer.`,
+						},
+					},
+				});
+			});
+		} else {
+			msg.channel.send({
+				embed: {
+					color: 0xFF0000,
+					title: "❌ Error",
+					description: `Could not detect a member.`,
+					fields: [{
+						name: "Syntax",
+						value: `\`${serverDocument.Config.command_prefix}strike @member | reason\``,
+					},
+					],
+					footer: {
+						text: `Mention a member you nonce.`,
+					},
+				},
+			});
+		}
 	} else {
-		embed.setTitle("✅ Success!")
-			.setDescription("The Strike Has Been Added!")
-			.setColor("#008000")
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-		message.channel.send({ embed });
-
-		let memberId = message.mentions.members.first().id;
-		let memberName = message.mentions.members.first().user.tag;
-		var striken = message.mentions.members.first();
-		let serverName = message.guild.name;
-		let serverId = message.guild.id;
-		let reasonCode = suffix.slice(1).join(" ");
-		let date = new Date();
-
-		embed2.setTitle("‼ You were striked!")
-			.addField("Server:", serverName, true)
-			.addField("Reason:", reasonCode, true)
-			.addField("By:", message.author.tag, true)
-			.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-		striken.send({ embed: embed2 });
-
-		db
-			.get("warnings")
-			.push({ id: shortid.generate(), server_name: serverName, server_id: serverId, member_name: memberName, member_id: memberId, reason: reasonCode, date: date, deleted: false })
-			.write();
+		msg.channel.send({
+			embed: {
+				color: 0xFF0000,
+				title: "❌ Error",
+				description: `You do not have permission to execute this command`,
+				footer: {
+					text: `v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA`,
+				},
+			},
+		});
 	}
 };

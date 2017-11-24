@@ -3,9 +3,15 @@ const Discord = require("discord.js");
 module.exports = async(client, message, suffix, serverDocument) => {
 	const embed = new Discord.MessageEmbed();
 	embed.setTitle("Information About This Server!")
-		.setDescription(`Owner: ${message.guild.owner.user.username}\nGuild ID: ${message.guild.id}\nRegion: ${message.guild.region}\nMember Count: ${message.guild.memberCount}\nGuild Creation Date: ${message.guild.createdAt}\nVerification Level: ${message.guild.verificationLevel}\nGuild Icon: ${message.guild.iconURL}`)
+		.addField(`Owner:`, `${message.guild.owner.user.tag}`)
+		.addField(`Guild ID:`, `${message.guild.id}`)
+		.addField(`Region:`, `${message.guild.region}`)
+		.addField(`Member Count:`, `${message.guild.memberCount}`)
+		.addField(`Guild Creation Date:`, `${message.guild.createdAt}`)
+		.addField(`Verification Level:`, `${message.guild.verificationLevel}`)
+		.addField(`Guild Icon:`, `${message.guild.iconURL({ format: "png" })}`)
 		.setColor("#3dff3d")
 		.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-	message.channel.send({ embed });
+	message.channel.send(embed);
 }
 ;

@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client;
 
-exports.run = async(client, message, args) => {
+module.exports = async(client, message, suffix, serverDocument, winston) => {
 	var messageID = "";
 	var embeds = [
 		// embed 0
@@ -37,7 +37,7 @@ exports.run = async(client, message, args) => {
 		// embed 3
 		new Discord.MessageEmbed()
 			.setTitle("Cookie Help Menu!")
-			 	.setTitle("Staff Commands!")
+			.setTitle("Staff Commands!")
 			.addField("--ban {user}", "Bans a user")
 			.addField("--kick {user}", "Kicks a user")
 			.addField("--prune {user} {amount}", "Prunes the users messages by a certain amount")
@@ -51,11 +51,11 @@ exports.run = async(client, message, args) => {
 
 	// Menu Start
 	message.react("✅");
-	message.channel.send({ embed: embeds[0] }).then(asyncmessage => {
-		await message.react("⏮");
-		await message.react("⏭");
-		await message.react("🗑");
-		messageID += message.id;
+	message.channel.send({ embed: embeds[0] }).then(async message2 => {
+		await message2.react("⏮");
+		await message2.react("⏭");
+		await message2.react("🗑");
+		messageID += message2.id;
 	});
 	var page = 0;
 
@@ -112,9 +112,9 @@ exports.run = async(client, message, args) => {
 			}
 		}
 		// delete the message if the trashcan is clicked
-  	if (user.id !== client.user.id && reaction.emoji.name === "🗑" && reaction.message.id === messageID) {
-  		reaction.message.delete();
-  		message.delete();
-  	}
+		if (user.id !== client.user.id && reaction.emoji.name === "🗑" && reaction.message.id === messageID) {
+			reaction.message.delete();
+			message.delete();
+		}
 	});
 };

@@ -25,7 +25,7 @@ module.exports = async(client, message, suffix, serverDocument, winston) => {
 				.setDescription("Missing User!")
 				.setColor("#ff0000")
 				.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-			message.channel.sendMessage({ embed });
+			message.channel.send({ embed });
 
 			let mutedUser = message.mentions.users.first();
 			winston.info(mutedUser);
@@ -34,21 +34,21 @@ module.exports = async(client, message, suffix, serverDocument, winston) => {
 					.setDescription("You Can't Mute Me!")
 					.setColor("#ff0000")
 					.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-				message.channel.sendMessage({ embed });
+				message.channel.send({ embed });
 				return;
 			}
 			embed.setTitle("✅ Success!")
 				.setDescription("Successfully Muted!")
 				.setColor("#3dff3d")
 				.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-			message.channel.sendMessage({ embed });
+			message.channel.send({ embed });
 			muteUser(mutedUser);
 		} else {
 			embed.setTitle("❌ Error!")
 				.setDescription("You haven't got Staff silly!")
 				.setColor("#ff0000")
 				.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
-			message.channel.sendMessage({ embed });
+			message.channel.send({ embed });
 		}
 	}
 };

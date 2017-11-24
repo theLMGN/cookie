@@ -7,13 +7,13 @@ module.exports = async(client, message, suffix, serverDocument) => {
 	embed.setTitle("✅ Link Sent In DM!")
 		.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3")
 		.setColor("#3dff3d");
-	message.channel.sendMessage({ embed });
+	message.channel.send(embed);
 
 	const embed2 = new Discord.MessageEmbed();
 	message.delete();
-	embed.setTitle("Discord Server!")
+	embed2.setTitle("Discord Server!")
 		.setDescription("Join My Discord Server! https://discord.gg/tuaVr3")
 		.setFooter("v2.6.5 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3")
 		.setColor("#3dff3d");
-	message.author.sendMessage({ embed2 });
+	message.author.send(embed2);
 };
