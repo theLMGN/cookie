@@ -1,7 +1,9 @@
 const settings = require("../settings.json");
 const Discord = require("discord.js");
+const winston = require("winston");
 
-module.exports = async(client, msg, suffix) => {
+module.exports = async(client, msg, suffix
+) => {
 	if (settings.maintainers.includes(msg.author.id)) {
 		try {
 			if (suffix.startsWith("```js") && suffix.endsWith("```")) suffix = suffix.substring(5, suffix.length - 3);
