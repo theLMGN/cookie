@@ -35,6 +35,8 @@ module.exports = async(client, message, suffix, serverDocument, winston) => {
 			.setTitle("Cookie Help Menu!")
 			.setTitle("Fun Commands!")
 			.addField("%8ball", "Ask the bot a question!")
+			.addField("%roll", "Roll the dice!")
+			.addField("%flip", "Flip a coin to settle your differences!")
 			.addField("%devon", "gay?!")
 			.addField("%devonisapiddo", "Pedo! :((")
 			.addField("%js", "Better then py :)")

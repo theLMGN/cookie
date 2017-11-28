@@ -11,7 +11,7 @@ module.exports = async(client, message, suffix, serverDocument) => {
 		.addField(`Verification Level:`, `${message.guild.verificationLevel}`)
 		.setThumbnail(`${message.guild.iconURL({ format: "png" })}`)
 		.setColor("#3dff3d")
-		.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
+		.setFooter("v2.1 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
 	message.channel.send(embed);
 }
 ;
