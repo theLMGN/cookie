@@ -5,7 +5,7 @@ module.exports = async(client, message, suffix, serverDocument) => {
 	message.delete();
 	embed.setTitle("The Truth")
 		.setDescription("JS > PY")
-		.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3")
+		.setFooter("v2.1 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3")
 		.setColor("#3dff3d");
 	message.channel.send({ embed });
 };

@@ -1,7 +1,9 @@
 const settings = require("../settings.json");
 const Discord = require("discord.js");
+const winston = require("winston");
 
-module.exports = async(client, msg, suffix) => {
+module.exports = async(client, msg, suffix
+) => {
 	if (settings.maintainers.includes(msg.author.id)) {
 		try {
 			if (suffix.startsWith("```js") && suffix.endsWith("```")) suffix = suffix.substring(5, suffix.length - 3);
@@ -35,7 +37,7 @@ module.exports = async(client, msg, suffix) => {
 				title: `:no_entry: No Permissions`,
 				description: `:raised_hand: Maintainers only. (AKA Sam and Dan)`,
 				footer: {
-					text: "v2.0 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA",
+					text: "v2.1 | Cookie, By Sam.#8235 | https://discord.gg/7vbPubA",
 				},
 			},
 		});

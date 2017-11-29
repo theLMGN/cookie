@@ -9,9 +9,9 @@ module.exports = async(client, message, suffix, serverDocument) => {
 		.addField(`Member Count:`, `${message.guild.memberCount}`)
 		.addField(`Guild Creation Date:`, `${message.guild.createdAt}`)
 		.addField(`Verification Level:`, `${message.guild.verificationLevel}`)
-		.addField(`Guild Icon:`, `${message.guild.iconURL({ format: "png" })}`)
+		.setThumbnail(`${message.guild.iconURL({ format: "png" })}`)
 		.setColor("#3dff3d")
-		.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
+		.setFooter("v2.1 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
 	message.channel.send(embed);
 }
 ;

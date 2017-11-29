@@ -19,7 +19,7 @@ module.exports = async(client, msg, suffix, serverDocument) => {
 				serverDocument.members.push({ _id: member.id });
 				targetMemberDocument = serverDocument.members.id(member.id);
 			}
-			targetMemberDocument.strikes.push({
+			targetMemberDocument.rewards.push({
 				_id: msg.author.id,
 				reason: reason || "No reason",
 			});
@@ -31,9 +31,9 @@ module.exports = async(client, msg, suffix, serverDocument) => {
 							author: {
 								name: `${client.user.username}`,
 							},
-							description: `${member.user.username} has been striked for: ${reason}`,
+							description: `${member.user.username} has been rewarded for: ${reason}`,
 							footer: {
-								text: `They now have ${targetMemberDocument.strikes.length} strike(s).`,
+								text: `They now have ${targetMemberDocument.rewards.length} reward(s).`,
 							},
 						},
 					});
@@ -44,9 +44,9 @@ module.exports = async(client, msg, suffix, serverDocument) => {
 							author: {
 								name: `${client.user.username}`,
 							},
-							description: `${member.user.username} has been striked for: No Reason`,
+							description: `${member.user.username} has been rewarded for: No Reason`,
 							footer: {
-								text: `They now have ${targetMemberDocument.strikes.length} strike(s).`,
+								text: `They now have ${targetMemberDocument.rewards.length} reward(s).`,
 							},
 						},
 					});
@@ -56,7 +56,7 @@ module.exports = async(client, msg, suffix, serverDocument) => {
 					embed: {
 						color: 0xFF0000,
 						title: "❌ Error",
-						description: `Could not add strike to member: ${err}`,
+						description: `Could not add rewarded to member: ${err}`,
 						footer: {
 							text: `If you do not understand this error please DM a Cookie developer.`,
 						},
@@ -71,7 +71,7 @@ module.exports = async(client, msg, suffix, serverDocument) => {
 					description: `Could not detect a member.`,
 					fields: [{
 						name: "Syntax",
-						value: `\`${serverDocument.Config.command_prefix}strike @member | reason\``,
+						value: `\`${serverDocument.Config.command_prefix}reward @member | reason\``,
 					},
 					],
 					footer: {

@@ -9,6 +9,6 @@ module.exports = async(client, message, suffix, serverDocument) => {
 		.addField("Current Version:", "2.0")
 		.addField("Ping: ", `${Math.floor(client.ping)}ms`)
 		.setColor("#1d54f9")
-		.setFooter("v2.0 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
+		.setFooter("v2.1 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
 	message.channel.send({ embed });
 };

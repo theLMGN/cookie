@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports = async(client, message, suffix, serverDocument) => {
-	message.reply(":white_check_mark:");
-	message.member.addRole("name", "Member");
-};
+	let role = message.guild.roles.find("name", "Member");
+	let member = message.member
+	member.addRole(role).catch(console.error);
+	}
