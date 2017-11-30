@@ -1,4 +1,4 @@
-const config = require("../config.json")
+const config = require("../settings.json");
 
 module.exports = async(client, message, suffix, serverDocument, winston) => {
 	if (config.maintainers.includes(message.author.id)) {
@@ -6,7 +6,7 @@ module.exports = async(client, message, suffix, serverDocument, winston) => {
 			if (!serverDocument) {
 				require("../events/guildCreate")(client, winston, g);
 			}
-			message.reply(`Done ${guild.name}`)
+			message.reply(`Done ${message.guild.name}`);
 		});
-	};
+	}
 };

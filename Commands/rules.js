@@ -19,4 +19,8 @@ module.exports = async(client, message, suffix, serverDocument) => {
 		.addField("Rule 9:", "Reading is exhausting... Well at least you've finished the rules!")
 		.setFooter("v2.1 | Cookie, By Sam.#8235 | https://discord.gg/tuaVr3");
 	message.channel.send(embed);
+
+	if (suffix === "set") {
+		
+	}
 };
