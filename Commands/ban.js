@@ -1,7 +1,7 @@
 const settings = require("../settings.json");
 
 module.exports = async(client, msg, suffix, serverDocument) => {
-	if (serverDocument.Config.admins.id(msg.author.id).level >= 3 || settings.maintainers.includes(msg.author.id)) {
+	if (serverDocument.Config.admins.some(admin => admin._id === msg.author.id && admin.level === 3) || settings.maintainers.includes(msg.author.id)) {
 		let member, reason;
 		if (suffix.indexOf("|") > -1 && suffix.length > 3) {
 			member = await client.memberSearch(suffix.substring(0, suffix.indexOf("|")).trim(), msg.guild).catch(() => {

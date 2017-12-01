@@ -64,5 +64,17 @@ module.exports = {
 			},
 		},
 		new_member_roles: [String],
+		mod_log: {
+			isEnabled: { type: Boolean, default: false },
+			channel_id: String,
+			entries: new mongoose.Schema({
+				_id: { type: String, required: true },
+				type: { type: String, required: true },
+				affected_user: { type: String },
+				creator: { type: String, required: true },
+				message_id: { type: String, required: true },
+				reason: { type: String },
+			}),
+		},
 	},
 };

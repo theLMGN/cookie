@@ -19,9 +19,8 @@ module.exports = async(client, msg, suffix, serverDocument, winston) => {
 			targetMemberDocument.strikes.map(strikeDocument => {
 				// const creator = msg.guild.members.get(strikeDocument._id);
 				const creator = client.memberSearch(strikeDocument._id, msg.guild);
-				msg.reply(creator.tag)
 				embed_fields.push({
-					name: `Warning from ${creator.toString()}`,
+					name: `Warning from <@${creator}>`,
 					value: `${strikeDocument.reason} - ${moment(strikeDocument.timestamp).fromNow()}`,
 					inline: true,
 				});
@@ -46,7 +45,7 @@ module.exports = async(client, msg, suffix, serverDocument, winston) => {
 							name: client.user.username,
 						},
 						color: 0x00FF00,
-						title: `Here are the strikes for ${member.targetMemberDocument}`,
+						description: `Here are the strikes for ${member}`,
 						fields: embed_fields,
 					},
 				});
